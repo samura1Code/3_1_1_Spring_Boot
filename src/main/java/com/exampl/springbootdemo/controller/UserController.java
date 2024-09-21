@@ -30,33 +30,33 @@ public class UserController {
         return "userlist";
     }
 
-    @GetMapping("/userCreate")
+    @GetMapping("/user/create")
     public String createUserForm(User user) {
         return "usercreate";
     }
 
 
-    @PostMapping("/userCreate")
+    @PostMapping("/user/create")
     public String createUser(User user) {
         userServiceImp.saveUser(user);
         return "redirect:/users";
 
     }
 
-    @GetMapping("userDelete/{id}")
+    @GetMapping("/user/delete/{id}")
     public String deleteUserForm(@PathVariable("id") Long id) {
         userServiceImp.deleteUser(id);
         return "redirect:/users";
     }
 
-    @GetMapping("userUpdate/{id}")
+    @GetMapping("/user/update/{id}")
     public String updateUserForm(@PathVariable("id") Long id, Model model) {
         User user = userServiceImp.findUserById(id);
         model.addAttribute("user", user);
         return "userupdate";
     }
 
-    @PostMapping("/userUpdate")
+    @PostMapping("/user/update")
     public String updateUser(User user) {
         userServiceImp.saveUser(user);
         return "redirect:/users";
